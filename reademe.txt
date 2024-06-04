@@ -1,0 +1,2 @@
+por que nextjs y no react 
+1 por que en pages si aumentamos hace el enrutamiento por nosotros 
