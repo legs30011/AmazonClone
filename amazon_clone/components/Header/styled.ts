@@ -80,3 +80,33 @@ export const CheckOutLink =styled(Link)`
     text-decoration: none;
     color: ${({theme}) => theme.colors.white};
 `;
+
+export const Main = styled.main`
+    padding: 2rem 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 1500px;
+`;
+
+export const Container1 = styled.h1`
+    padding: 0 0.5rem;
+    height: 100%;
+    min-height: 100vh;
+    background-color: white;
+`;
+
+export const Tilte =styled.h1`
+    margin: 24px 0px 16 px;
+    line-height: 1.15;
+    font-size:1.4rem;
+    font-weight:500;
+    text-align:left;
+    text-decoration:none;
+    a{
+        color:${({theme})=> theme.color.black};
+        text-decoration: none;
+    }
+`;
