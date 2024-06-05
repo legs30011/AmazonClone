@@ -2,9 +2,27 @@ import React from 'react'
 import { Basket, BasketCounter, CheckOutLink, Logo, Nav, Option, OptionBottomLine, OptionTopLine, SearchBox, SearchIconButton, SearchInput, SignInLink } from './styled'
 import Link from 'next/link'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { useAppDispatch, useAppSelector } from '@/lib/store/hooks';
+import { selectUser, signOutFromAccount } from '@/lib/store/reducers/userReducer';
+import { auth } from '@/lib/firebase';
+import { useRouter } from 'next/router';
 
 
 const Header = () => {
+    const user =useAppSelector(selectUser);
+    const dispatch = useAppDispatch();
+    const router = useRouter();
+
+    const handleSignIn = () => {
+        if (user !== null){
+            auth.signOut();
+            dispatch(signOutFromAccount());
+            router.push("/login")
+        }else{
+            router.push("/login");
+        }
+    };
+    
   return (
     <Nav>
         <Link href="/">
@@ -19,10 +37,10 @@ const Header = () => {
     <SignInLink>
         <Option>
             <OptionTopLine>
-                Hello
+                Hello {user?.email}
             </OptionTopLine>
-            <OptionBottomLine>
-                &SignIn
+            <OptionBottomLine onClick={()=> handleSignIn()}>
+                {user !== null ? "Sign Out" : "Sign In"}
             </OptionBottomLine>
         </Option>
     </SignInLink>
