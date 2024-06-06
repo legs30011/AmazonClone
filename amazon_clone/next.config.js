@@ -5,17 +5,25 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
-
-  images:{
+  images: {
     remotePatterns: [
       {
         protocol: 'https',
+        hostname: 'pngimg.com',
+        pathname: '/**', // Permite todas las imágenes del dominio
+      },
+      {
+        protocol: 'https',
+        hostname: 'media.graphassets.com',
+        pathname: '/**', // Permite todas las imágenes del dominio
+      },
+      {
+        protocol: 'https',
         hostname: 'www.shutterstock.com',
-        port: '',
+        pathname: '/**', // Permite todas las imágenes del dominio
       },
     ],
   },
-  
 };
 
 module.exports = nextConfig;
