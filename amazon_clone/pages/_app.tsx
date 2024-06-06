@@ -4,6 +4,8 @@ import GlobalStyle from "@/styles/globalstyles";
 import Header from "@/components/Header";
 import { Provider } from "react-redux";
 import { store } from "@/lib/store";
+import client from "@/lib/graphql/client";
+import { ApolloProvider } from "@apollo/client";
 
 export const theme: DefaultTheme = {
   colors: {
@@ -19,11 +21,13 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
     <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Header></Header>
-        <Component {...pageProps} />
-      </ThemeProvider>
+    <ApolloProvider client={client}>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <Header></Header>
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </ApolloProvider>,
     </Provider>
     </>
   );
